@@ -8,6 +8,10 @@ public class CustomerOrder {
         this.drink = drink;
     }
 
+    public CustomerOrder(Drink drink, int numberOfSugars) {
+        throw new RuntimeException("Not yet implemented!");
+    }
+
     public Drink getDrink() {
         return drink;
     }
