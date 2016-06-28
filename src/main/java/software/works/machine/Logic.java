@@ -12,12 +12,8 @@ public class Logic {
         StringBuilder instructions = new StringBuilder();
 
         instructions.append(drinkInstruction(customerOrder));
-
-        if (customerOrder.getNumberOfSugars() > 0) {
-            instructions.append(":").append(customerOrder.getNumberOfSugars()).append(":");
-        } else {
-            instructions.append("::");
-        }
+        instructions.append(sugarInstruction(customerOrder));
+        instructions.append(":");
 
         drinkMaker.makeDrink(new Message(instructions.toString()));
     }
@@ -40,5 +36,9 @@ public class Logic {
         }
 
         return result;
+    }
+
+    private String sugarInstruction(CustomerOrder customerOrder) {
+        return customerOrder.getNumberOfSugars() > 0 ? ":" + customerOrder.getNumberOfSugars() : ":";
     }
 }
