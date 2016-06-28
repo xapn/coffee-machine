@@ -13,7 +13,11 @@ public class Logic {
 
         instructions.append(drinkInstruction(customerOrder));
         instructions.append(sugarInstruction(customerOrder));
-        instructions.append(":");
+        if (customerOrder.getNumberOfSugars() > 0) {
+            instructions.append(":0");
+        } else {
+            instructions.append(":");
+        }
 
         drinkMaker.makeDrink(new Message(instructions.toString()));
     }
