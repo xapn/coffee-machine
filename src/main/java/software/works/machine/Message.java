@@ -24,4 +24,9 @@ public class Message {
     public int hashCode() {
         return Objects.hash(instructions);
     }
+
+    @Override
+    public String toString() {
+        return String.format(instructions);
+    }
 }

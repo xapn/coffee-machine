@@ -19,6 +19,20 @@ public class LogicTest {
     }
 
     @Test
+    public void should_make_tea() {
+        // GIVEN
+        CustomerOrder customerOrder = new CustomerOrder(Drink.TEA);
+        drinkMakerMock.makeDrink(new Message("T::"));
+        replay(drinkMakerMock);
+
+        // WHEN
+        sut.sendOrderToDrinkMaker(customerOrder);
+
+        // THEN
+        verify(drinkMakerMock);
+    }
+
+    @Test
     public void should_make_chocolate() {
         // GIVEN
         CustomerOrder customerOrder = new CustomerOrder(Drink.CHOCOLATE);
