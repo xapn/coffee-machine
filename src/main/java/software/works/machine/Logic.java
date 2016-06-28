@@ -11,22 +11,34 @@ public class Logic {
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
         StringBuilder instructions = new StringBuilder();
 
+        instructions.append(drinkInstruction(customerOrder));
+        instructions.append(sugarInstruction(customerOrder));
+        instructions.append(":");
+
+        drinkMaker.makeDrink(new Message(instructions.toString()));
+    }
+
+    private String drinkInstruction(CustomerOrder customerOrder) {
+        String result = null;
+
         switch (customerOrder.getDrink()) {
         case TEA:
-            instructions.append("T");
+            result = "T";
             break;
         case CHOCOLATE:
-            instructions.append("H");
+            result = "H";
             break;
         case COFFEE:
-            instructions.append("C");
+            result = "C";
             break;
         default:
             break;
         }
 
-        instructions.append("::");
+        return result;
+    }
 
-        drinkMaker.makeDrink(new Message(instructions.toString()));
+    private String sugarInstruction(CustomerOrder customerOrder) {
+        return customerOrder.getNumberOfSugars() > 0 ? ":" + customerOrder.getNumberOfSugars() : ":";
     }
 }
