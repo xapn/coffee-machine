@@ -39,10 +39,14 @@ public class Logic {
     }
 
     private String sugarInstruction(CustomerOrder customerOrder) {
-        return customerOrder.getNumberOfSugars() > 0 ? ":" + customerOrder.getNumberOfSugars() : ":";
+        return customerWantsSugar(customerOrder) ? ":" + customerOrder.getNumberOfSugars() : ":";
     }
 
     private String stickInstruction(CustomerOrder customerOrder) {
-        return customerOrder.getNumberOfSugars() > 0 ? ":0" : ":";
+        return customerWantsSugar(customerOrder) ? ":0" : ":";
+    }
+
+    private boolean customerWantsSugar(CustomerOrder customerOrder) {
+        return customerOrder.getNumberOfSugars() > 0;
     }
 }
