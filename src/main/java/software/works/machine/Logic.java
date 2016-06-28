@@ -11,19 +11,7 @@ public class Logic {
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
         StringBuilder instructions = new StringBuilder();
 
-        switch (customerOrder.getDrink()) {
-        case TEA:
-            instructions.append("T");
-            break;
-        case CHOCOLATE:
-            instructions.append("H");
-            break;
-        case COFFEE:
-            instructions.append("C");
-            break;
-        default:
-            break;
-        }
+        instructions.append(drinkInstruction(customerOrder));
 
         if (customerOrder.getNumberOfSugars() > 0) {
             instructions.append(":").append(customerOrder.getNumberOfSugars()).append(":");
@@ -32,5 +20,25 @@ public class Logic {
         }
 
         drinkMaker.makeDrink(new Message(instructions.toString()));
+    }
+
+    private String drinkInstruction(CustomerOrder customerOrder) {
+        String result = null;
+
+        switch (customerOrder.getDrink()) {
+        case TEA:
+            result = "T";
+            break;
+        case CHOCOLATE:
+            result = "H";
+            break;
+        case COFFEE:
+            result = "C";
+            break;
+        default:
+            break;
+        }
+
+        return result;
     }
 }
