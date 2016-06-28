@@ -45,4 +45,18 @@ public class LogicTest {
         // THEN
         verify(drinkMakerMock);
     }
+
+    @Test
+    public void should_make_coffee() {
+        // GIVEN
+        CustomerOrder customerOrder = new CustomerOrder(Drink.COFFEE);
+        drinkMakerMock.makeDrink(new Message("C::"));
+        replay(drinkMakerMock);
+
+        // WHEN
+        sut.sendOrderToDrinkMaker(customerOrder);
+
+        // THEN
+        verify(drinkMakerMock);
+    }
 }
