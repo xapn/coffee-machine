@@ -11,13 +11,9 @@ public class Logic {
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
         StringBuilder instructions = new StringBuilder();
 
-        instructions.append(drinkInstruction(customerOrder));
-        instructions.append(sugarInstruction(customerOrder));
-        if (customerOrder.getNumberOfSugars() > 0) {
-            instructions.append(":0");
-        } else {
-            instructions.append(":");
-        }
+        instructions.append(drinkInstruction(customerOrder)) //
+                .append(sugarInstruction(customerOrder)) //
+                .append(stickInstruction(customerOrder));
 
         drinkMaker.makeDrink(new Message(instructions.toString()));
     }
@@ -44,5 +40,9 @@ public class Logic {
 
     private String sugarInstruction(CustomerOrder customerOrder) {
         return customerOrder.getNumberOfSugars() > 0 ? ":" + customerOrder.getNumberOfSugars() : ":";
+    }
+
+    private String stickInstruction(CustomerOrder customerOrder) {
+        return customerOrder.getNumberOfSugars() > 0 ? ":0" : ":";
     }
 }
