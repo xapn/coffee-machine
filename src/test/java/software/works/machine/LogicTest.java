@@ -48,7 +48,7 @@ public class LogicTest {
         return Arrays.asList(new TestProperties(Drink.TEA, "T::"), //
                 new TestProperties(Drink.CHOCOLATE, "H::"), //
                 new TestProperties(Drink.COFFEE, "C::"), //
-                new TestProperties(Drink.TEA, 1, "T:1:") //
+                new TestProperties(Drink.TEA, 1, "T:1:0") //
         );
     }
 
