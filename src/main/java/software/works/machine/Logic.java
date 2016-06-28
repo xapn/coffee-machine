@@ -9,22 +9,24 @@ public class Logic {
     }
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
-        String instructions = null;
+        StringBuilder instructions = new StringBuilder();
 
         switch (customerOrder.getDrink()) {
         case TEA:
-            instructions = "T::";
+            instructions.append("T");
             break;
         case CHOCOLATE:
-            instructions = "H::";
+            instructions.append("H");
             break;
         case COFFEE:
-            instructions = "C::";
+            instructions.append("C");
             break;
         default:
             break;
         }
 
-        drinkMaker.makeDrink(new Message(instructions));
+        instructions.append("::");
+
+        drinkMaker.makeDrink(new Message(instructions.toString()));
     }
 }
