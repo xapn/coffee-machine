@@ -9,6 +9,10 @@ public class Logic {
     }
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
-        drinkMaker.makeDrink(new Message("H::"));
+        if (customerOrder.getDrink() == Drink.TEA) {
+            drinkMaker.makeDrink(new Message("T::"));
+        } else {
+            drinkMaker.makeDrink(new Message("H::"));
+        }
     }
 }

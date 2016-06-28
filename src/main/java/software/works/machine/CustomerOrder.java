@@ -7,4 +7,8 @@ public class CustomerOrder {
     public CustomerOrder(Drink drink) {
         this.drink = drink;
     }
+
+    public Drink getDrink() {
+        return drink;
+    }
 }
