@@ -9,12 +9,22 @@ public class Logic {
     }
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
-        if (customerOrder.getDrink() == Drink.TEA) {
-            drinkMaker.makeDrink(new Message("T::"));
-        } else if (customerOrder.getDrink() == Drink.CHOCOLATE) {
-            drinkMaker.makeDrink(new Message("H::"));
-        } else {
-            drinkMaker.makeDrink(new Message("C::"));
+        String instructions = null;
+
+        switch (customerOrder.getDrink()) {
+        case TEA:
+            instructions = "T::";
+            break;
+        case CHOCOLATE:
+            instructions = "H::";
+            break;
+        case COFFEE:
+            instructions = "C::";
+            break;
+        default:
+            break;
         }
+
+        drinkMaker.makeDrink(new Message(instructions));
     }
 }
