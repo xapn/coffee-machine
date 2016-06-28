@@ -25,7 +25,11 @@ public class Logic {
             break;
         }
 
-        instructions.append("::");
+        if (customerOrder.getNumberOfSugars() > 0) {
+            instructions.append(":").append(customerOrder.getNumberOfSugars()).append(":");
+        } else {
+            instructions.append("::");
+        }
 
         drinkMaker.makeDrink(new Message(instructions.toString()));
     }
