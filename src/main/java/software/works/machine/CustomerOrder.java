@@ -2,7 +2,9 @@ package software.works.machine;
 
 public class CustomerOrder {
 
+    private Drink drink;
+
     public CustomerOrder(Drink drink) {
-        throw new RuntimeException("Not yet implemented!");
+        this.drink = drink;
     }
 }

@@ -2,11 +2,13 @@ package software.works.machine;
 
 public class Logic {
 
+    private DrinkMaker drinkMaker;
+
     public Logic(DrinkMaker drinkMaker) {
-        throw new RuntimeException("Not yet implemented!");
+        this.drinkMaker = drinkMaker;
     }
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
-        throw new RuntimeException("Not yet implemented!");
+        drinkMaker.makeDrink(new Message("H::"));
     }
 }
