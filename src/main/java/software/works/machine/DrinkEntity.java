@@ -1,12 +1,14 @@
 package software.works.machine;
 
+import java.math.BigDecimal;
+
 public class DrinkEntity {
 
     private Drink drink;
     private char symbol;
-    private float price;
+    private BigDecimal price;
 
-    public DrinkEntity(Drink drink, char symbol, float price) {
+    public DrinkEntity(Drink drink, char symbol, BigDecimal price) {
         this.drink = drink;
         this.symbol = symbol;
         this.price = price;
@@ -20,7 +22,7 @@ public class DrinkEntity {
         return symbol;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 }
