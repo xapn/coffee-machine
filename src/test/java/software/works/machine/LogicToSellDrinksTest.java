@@ -3,7 +3,11 @@ package software.works.machine;
 import static org.easymock.EasyMock.mock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
+import static software.works.machine.Drink.CHOCOLATE;
+import static software.works.machine.Drink.COFFEE;
+import static software.works.machine.Drink.TEA;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -15,28 +19,24 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class LogicTest {
+public class LogicToSellDrinksTest {
 
     private Logic sut;
     private DrinkMaker drinkMakerMock;
 
-    private static class TestProperties {
-        private CustomerOrder givenCustomerOrder;
-        private Message expectedMessage;
+    static class TestProperties {
+        CustomerOrder givenCustomerOrder;
+        Message expectedMessage;
 
-        public TestProperties(Drink givenDrink, String expectedMessage) {
-            this.givenCustomerOrder = new CustomerOrder(givenDrink);
-            this.expectedMessage = new Message(expectedMessage);
-        }
-
-        public TestProperties(Drink givenDrink, int givenNumberOfSugars, String expectedMessage) {
-            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenNumberOfSugars);
-            this.expectedMessage = new Message(expectedMessage);
+        TestProperties(Drink givenDrink, String givenAmountOfMoney, String expectedInstructions) {
+            this.givenCustomerOrder = new CustomerOrder(givenDrink, new BigDecimal(givenAmountOfMoney));
+            this.expectedMessage = new Message(expectedInstructions);
         }
 
         @Override
         public String toString() {
-            return String.format("Instructions of " + givenCustomerOrder + " should be " + expectedMessage);
+            return "Instructions of " + givenCustomerOrder.getDrink() + " paid with "
+                    + givenCustomerOrder.getAmountOfMoney() + " € should be " + expectedMessage;
         }
     }
 
@@ -45,11 +45,10 @@ public class LogicTest {
 
     @Parameters(name = "{0}")
     public static Collection<TestProperties> dataSet() {
-        return Arrays.asList(new TestProperties(Drink.TEA, "T::"), //
-                new TestProperties(Drink.CHOCOLATE, "H::"), //
-                new TestProperties(Drink.COFFEE, "C::"), //
-                new TestProperties(Drink.TEA, 1, "T:1:0") //
-        );
+        return Arrays.asList( //
+                new TestProperties(TEA, "0", "M:It lacks 0.4 €."),
+                new TestProperties(CHOCOLATE, "0.3", "M:It lacks 0.2 €."),
+                new TestProperties(COFFEE, "0.3", "M:It lacks 0.3 €."));
     }
 
     @Before
@@ -59,7 +58,7 @@ public class LogicTest {
     }
 
     @Test
-    public void should_make_drink() {
+    public void should_alert_given_not_enough_money() {
         // GIVEN
         drinkMakerMock.makeDrink(properties.expectedMessage);
         replay(drinkMakerMock);
