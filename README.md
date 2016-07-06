@@ -2,6 +2,11 @@ Coffee Machine - http://simcap.github.io/coffeemachine/
 
 # Release notes
 
+## Version 3.0
+
+- I want to be able to buy a orange juice for 0.6 euro.
+- I want to be able to have my coffee, chocolate or tea extra hot.
+
 ## Version 2.0
 
 - The drink maker should make the drinks only if the correct amount of money is given.

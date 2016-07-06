@@ -4,7 +4,7 @@
 
     <groupId>software.works</groupId>
     <artifactId>coffee-machine</artifactId>
-    <version>3.0-SNAPSHOT</version>
+    <version>3.0-RELEASE</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
