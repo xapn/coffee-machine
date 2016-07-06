@@ -4,14 +4,21 @@ public class CustomerOrder {
 
     private Drink drink;
     private int numberOfSugars;
+    private float amountOfMoney;
 
     public CustomerOrder(Drink drink) {
         this.drink = drink;
     }
 
-    public CustomerOrder(Drink drink, int numberOfSugars) {
+    public CustomerOrder(Drink drink, float amountOfMoney) {
+        this.drink = drink;
+        this.amountOfMoney = amountOfMoney;
+    }
+
+    public CustomerOrder(Drink drink, int numberOfSugars, float amountOfMoney) {
         this.drink = drink;
         this.numberOfSugars = numberOfSugars;
+        this.amountOfMoney = amountOfMoney;
     }
 
     public Drink getDrink() {
@@ -22,8 +29,13 @@ public class CustomerOrder {
         return numberOfSugars;
     }
 
+    public float getAmountOfMoney() {
+        return amountOfMoney;
+    }
+
     @Override
     public String toString() {
         return String.format(drink + " with " + numberOfSugars + " sugars");
     }
+
 }

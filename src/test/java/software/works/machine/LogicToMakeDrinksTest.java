@@ -3,6 +3,9 @@ package software.works.machine;
 import static org.easymock.EasyMock.mock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
+import static software.works.machine.Drink.CHOCOLATE;
+import static software.works.machine.Drink.COFFEE;
+import static software.works.machine.Drink.TEA;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,7 +18,7 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class LogicTest {
+public class LogicToMakeDrinksTest {
 
     private Logic sut;
     private DrinkMaker drinkMakerMock;
@@ -24,13 +27,14 @@ public class LogicTest {
         private CustomerOrder givenCustomerOrder;
         private Message expectedMessage;
 
-        public TestProperties(Drink givenDrink, String expectedMessage) {
-            this.givenCustomerOrder = new CustomerOrder(givenDrink);
+        public TestProperties(Drink givenDrink, float givenAmountOfMoney, String expectedMessage) {
+            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenAmountOfMoney);
             this.expectedMessage = new Message(expectedMessage);
         }
 
-        public TestProperties(Drink givenDrink, int givenNumberOfSugars, String expectedMessage) {
-            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenNumberOfSugars);
+        public TestProperties(Drink givenDrink, int givenNumberOfSugars, float givenAmountOfMoney,
+                String expectedMessage) {
+            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenNumberOfSugars, givenAmountOfMoney);
             this.expectedMessage = new Message(expectedMessage);
         }
 
@@ -45,10 +49,11 @@ public class LogicTest {
 
     @Parameters(name = "{0}")
     public static Collection<TestProperties> dataSet() {
-        return Arrays.asList(new TestProperties(Drink.TEA, "T::"), //
-                new TestProperties(Drink.CHOCOLATE, "H::"), //
-                new TestProperties(Drink.COFFEE, "C::"), //
-                new TestProperties(Drink.TEA, 1, "T:1:0") //
+        return Arrays.asList( //
+                new TestProperties(TEA, 0.4f, "T::"), //
+                new TestProperties(CHOCOLATE, 0.5f, "H::"), //
+                new TestProperties(COFFEE, 0.6f, "C::"), //
+                new TestProperties(TEA, 1, 0.4f, "T:1:0") //
         );
     }
 
