@@ -34,7 +34,8 @@ public class LogicToSellDrinksTest {
 
         @Override
         public String toString() {
-            return givenCustomerOrder.getDrink() + " paid with " + givenCustomerOrder.getAmountOfMoney() + " €";
+            return "Instructions of " + givenCustomerOrder.getDrink() + " paid with "
+                    + givenCustomerOrder.getAmountOfMoney() + " € should be " + expectedMessage;
         }
     }
 
@@ -45,7 +46,7 @@ public class LogicToSellDrinksTest {
     public static Collection<TestProperties> dataSet() {
         return Arrays.asList( //
                 new TestProperties(new CustomerOrder(TEA, 0f), "M:It lacks 0.4 €."),
-                new TestProperties(new CustomerOrder(CHOCOLATE, 0.2f), "M:It lacks 0.3 €."),
+                new TestProperties(new CustomerOrder(CHOCOLATE, 0.3f), "M:It lacks 0.2 €."),
                 new TestProperties(new CustomerOrder(COFFEE, 0.3f), "M:It lacks 0.3 €."));
     }
 
