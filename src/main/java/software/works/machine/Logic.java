@@ -13,7 +13,8 @@ public class Logic {
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
         if (customerOrder.getDrink() == TEA && customerOrder.getAmountOfMoney() < 0.4f //
-                || customerOrder.getDrink() == CHOCOLATE && customerOrder.getAmountOfMoney() < 0.5f) {
+                || customerOrder.getDrink() == CHOCOLATE && customerOrder.getAmountOfMoney() < 0.5f //
+                || customerOrder.getDrink() == Drink.COFFEE && customerOrder.getAmountOfMoney() < 0.6f) {
             drinkMaker.makeDrink(new Message("M:It lacks some money."));
         } else {
             StringBuilder instructions = new StringBuilder();
