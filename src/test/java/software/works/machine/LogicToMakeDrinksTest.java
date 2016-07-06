@@ -3,6 +3,9 @@ package software.works.machine;
 import static org.easymock.EasyMock.mock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
+import static software.works.machine.Drink.CHOCOLATE;
+import static software.works.machine.Drink.COFFEE;
+import static software.works.machine.Drink.TEA;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -47,10 +50,10 @@ public class LogicToMakeDrinksTest {
     @Parameters(name = "{0}")
     public static Collection<TestProperties> dataSet() {
         return Arrays.asList( //
-                new TestProperties(Drink.TEA, 0.4f, "T::"), //
-                new TestProperties(Drink.CHOCOLATE, 0.5f, "H::"), //
-                new TestProperties(Drink.COFFEE, 0.6f, "C::"), //
-                new TestProperties(Drink.TEA, 1, 0.4f, "T:1:0") //
+                new TestProperties(TEA, 0.4f, "T::"), //
+                new TestProperties(CHOCOLATE, 0.5f, "H::"), //
+                new TestProperties(COFFEE, 0.6f, "C::"), //
+                new TestProperties(TEA, 1, 0.4f, "T:1:0") //
         );
     }
 

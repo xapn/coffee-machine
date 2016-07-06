@@ -1,6 +1,7 @@
 package software.works.machine;
 
 import static software.works.machine.Drink.CHOCOLATE;
+import static software.works.machine.Drink.COFFEE;
 import static software.works.machine.Drink.TEA;
 
 public class Logic {
@@ -12,9 +13,7 @@ public class Logic {
     }
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
-        if (customerOrder.getDrink() == TEA && customerOrder.getAmountOfMoney() < 0.4f //
-                || customerOrder.getDrink() == CHOCOLATE && customerOrder.getAmountOfMoney() < 0.5f //
-                || customerOrder.getDrink() == Drink.COFFEE && customerOrder.getAmountOfMoney() < 0.6f) {
+        if (customerHasNotPaid(customerOrder)) {
             drinkMaker.makeDrink(new Message("M:It lacks some money."));
         } else {
             StringBuilder instructions = new StringBuilder();
@@ -25,6 +24,12 @@ public class Logic {
 
             drinkMaker.makeDrink(new Message(instructions.toString()));
         }
+    }
+
+    private boolean customerHasNotPaid(CustomerOrder customerOrder) {
+        return customerOrder.getDrink() == TEA && customerOrder.getAmountOfMoney() < 0.4f //
+                || customerOrder.getDrink() == CHOCOLATE && customerOrder.getAmountOfMoney() < 0.5f //
+                || customerOrder.getDrink() == COFFEE && customerOrder.getAmountOfMoney() < 0.6f;
     }
 
     private String drinkInstruction(CustomerOrder customerOrder) {
