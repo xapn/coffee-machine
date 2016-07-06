@@ -25,19 +25,23 @@ public class LogicToMakeDrinksTest {
     private Logic sut;
     private DrinkMaker drinkMakerMock;
 
-    private static class TestProperties {
+    static class TestProperties {
         private CustomerOrder givenCustomerOrder;
         private Message expectedMessage;
 
-        public TestProperties(Drink givenDrink, String givenAmountOfMoney, String expectedMessage) {
+        TestProperties(Drink givenDrink, String givenAmountOfMoney, String expectedMessage) {
             this.givenCustomerOrder = new CustomerOrder(givenDrink, new BigDecimal(givenAmountOfMoney));
             this.expectedMessage = new Message(expectedMessage);
         }
 
-        public TestProperties(Drink givenDrink, int givenNumberOfSugars, String givenAmountOfMoney,
-                String expectedMessage) {
+        TestProperties(Drink givenDrink, int givenNumberOfSugars, String givenAmountOfMoney, String expectedMessage) {
             this.givenCustomerOrder = new CustomerOrder(givenDrink, givenNumberOfSugars,
                     new BigDecimal(givenAmountOfMoney));
+            this.expectedMessage = new Message(expectedMessage);
+        }
+
+        TestProperties(Drink givenDrink, boolean givenExtraHot, String givenAmountOfMoney, String expectedMessage) {
+            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenExtraHot, new BigDecimal(givenAmountOfMoney));
             this.expectedMessage = new Message(expectedMessage);
         }
 
@@ -57,7 +61,8 @@ public class LogicToMakeDrinksTest {
                 new TestProperties(CHOCOLATE, "0.5", "H::"), //
                 new TestProperties(COFFEE, "0.6", "C::"), //
                 new TestProperties(ORANGE_JUICE, "0.6", "O::"), //
-                new TestProperties(TEA, 1, "0.4", "T:1:0") //
+                new TestProperties(TEA, 1, "0.4", "T:1:0"), //
+                new TestProperties(COFFEE, true, "0.6", "Ch::") //
         );
     }
 
