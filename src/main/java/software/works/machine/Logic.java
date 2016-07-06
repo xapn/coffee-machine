@@ -1,5 +1,7 @@
 package software.works.machine;
 
+import static software.works.machine.Drink.TEA;
+
 public class Logic {
 
     private DrinkMaker drinkMaker;
@@ -9,13 +11,17 @@ public class Logic {
     }
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
-        StringBuilder instructions = new StringBuilder();
+        if (customerOrder.getDrink() == TEA && customerOrder.getAmountOfMoney() < 0.4f) {
+            drinkMaker.makeDrink(new Message("M:It lacks some money."));
+        } else {
+            StringBuilder instructions = new StringBuilder();
 
-        instructions.append(drinkInstruction(customerOrder)) //
-                .append(sugarInstruction(customerOrder)) //
-                .append(stickInstruction(customerOrder));
+            instructions.append(drinkInstruction(customerOrder)) //
+                    .append(sugarInstruction(customerOrder)) //
+                    .append(stickInstruction(customerOrder));
 
-        drinkMaker.makeDrink(new Message(instructions.toString()));
+            drinkMaker.makeDrink(new Message(instructions.toString()));
+        }
     }
 
     private String drinkInstruction(CustomerOrder customerOrder) {
