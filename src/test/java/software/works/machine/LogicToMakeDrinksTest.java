@@ -53,7 +53,7 @@ public class LogicToMakeDrinksTest {
     public static Collection<TestProperties> dataSet() {
         return Arrays.asList( //
                 new TestProperties(Drink.TEA, 0.4f, "T::"), //
-                new TestProperties(Drink.CHOCOLATE, "H::"), //
+                new TestProperties(Drink.CHOCOLATE, 0.5f, "H::"), //
                 new TestProperties(Drink.COFFEE, "C::"), //
                 new TestProperties(Drink.TEA, 1, 0.4f, "T:1:0") //
         );
