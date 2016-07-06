@@ -15,9 +15,10 @@ public class CustomerOrder {
         this.amountOfMoney = amountOfMoney;
     }
 
-    public CustomerOrder(Drink drink, int numberOfSugars) {
+    public CustomerOrder(Drink drink, int numberOfSugars, float amountOfMoney) {
         this.drink = drink;
         this.numberOfSugars = numberOfSugars;
+        this.amountOfMoney = amountOfMoney;
     }
 
     public Drink getDrink() {
