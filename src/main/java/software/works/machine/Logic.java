@@ -2,6 +2,9 @@ package software.works.machine;
 
 public class Logic {
 
+    private static final String INSTRUCTION_SEPARATOR = ":";
+    private static final String STICK_SYMBOL = "0";
+    private static final String MESSAGE_SYMBOL = "M";
     private DrinkMaker drinkMaker;
     private DrinkRepository drinkRepository;
 
@@ -16,7 +19,7 @@ public class Logic {
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
         if (customerHasNotPaid(customerOrder)) {
-            drinkMaker.makeDrink(new Message("M:It lacks some money."));
+            drinkMaker.makeDrink(new Message(MESSAGE_SYMBOL + INSTRUCTION_SEPARATOR + "It lacks some money."));
         } else {
             StringBuilder instructions = new StringBuilder();
 
@@ -37,11 +40,13 @@ public class Logic {
     }
 
     private String sugarInstruction(CustomerOrder customerOrder) {
-        return customerWantsSugar(customerOrder) ? ":" + customerOrder.getNumberOfSugars() : ":";
+        return customerWantsSugar(customerOrder) ? //
+                INSTRUCTION_SEPARATOR + customerOrder.getNumberOfSugars() : INSTRUCTION_SEPARATOR;
     }
 
     private String stickInstruction(CustomerOrder customerOrder) {
-        return customerWantsSugar(customerOrder) ? ":0" : ":";
+        return customerWantsSugar(customerOrder) ? //
+                INSTRUCTION_SEPARATOR + STICK_SYMBOL : INSTRUCTION_SEPARATOR;
     }
 
     private boolean customerWantsSugar(CustomerOrder customerOrder) {
