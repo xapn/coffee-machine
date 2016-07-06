@@ -45,8 +45,9 @@ public class Logic {
         return "It lacks " + lack + " €.";
     }
 
-    private char drinkInstruction(CustomerOrder customerOrder) {
-        return drinkRepository.findAll().get(customerOrder.getDrink()).getSymbol();
+    private String drinkInstruction(CustomerOrder customerOrder) {
+        return drinkRepository.findAll().get(customerOrder.getDrink()).getSymbol() //
+                + (customerOrder.isExtraHot() ? "h" : "");
     }
 
     private String sugarInstruction(CustomerOrder customerOrder) {
