@@ -43,9 +43,10 @@ public class LogicToSellDrinksTest {
 
     @Parameters(name = "{0}")
     public static Collection<TestProperties> dataSet() {
-        return Arrays.asList(new TestProperties(new CustomerOrder(TEA, 0f), "M:It lacks some money."),
-                new TestProperties(new CustomerOrder(CHOCOLATE, 0f), "M:It lacks some money."),
-                new TestProperties(new CustomerOrder(COFFEE, 0f), "M:It lacks some money."));
+        return Arrays.asList( //
+                new TestProperties(new CustomerOrder(TEA, 0f), "M:It lacks 0.4 €."),
+                new TestProperties(new CustomerOrder(CHOCOLATE, 0.3f), "M:It lacks 0.2 €."),
+                new TestProperties(new CustomerOrder(COFFEE, 0.3f), "M:It lacks 0.3 €."));
     }
 
     @Before
