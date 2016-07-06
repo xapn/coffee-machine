@@ -1,6 +1,11 @@
-Coffee Machine
+Coffee Machine - http://simcap.github.io/coffeemachine/
 
 # Release notes
+
+## Version 2.0
+
+- The drink maker should make the drinks only if the correct amount of money is given.
+- If not enough money is provided, we want to send a message to the drink maker. The message should contains at least the amount of money missing.
 
 ## Version 1.0
 
