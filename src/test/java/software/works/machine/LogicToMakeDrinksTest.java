@@ -7,6 +7,7 @@ import static software.works.machine.Drink.CHOCOLATE;
 import static software.works.machine.Drink.COFFEE;
 import static software.works.machine.Drink.TEA;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -27,14 +28,15 @@ public class LogicToMakeDrinksTest {
         private CustomerOrder givenCustomerOrder;
         private Message expectedMessage;
 
-        public TestProperties(Drink givenDrink, float givenAmountOfMoney, String expectedMessage) {
-            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenAmountOfMoney);
+        public TestProperties(Drink givenDrink, String givenAmountOfMoney, String expectedMessage) {
+            this.givenCustomerOrder = new CustomerOrder(givenDrink, new BigDecimal(givenAmountOfMoney));
             this.expectedMessage = new Message(expectedMessage);
         }
 
-        public TestProperties(Drink givenDrink, int givenNumberOfSugars, float givenAmountOfMoney,
+        public TestProperties(Drink givenDrink, int givenNumberOfSugars, String givenAmountOfMoney,
                 String expectedMessage) {
-            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenNumberOfSugars, givenAmountOfMoney);
+            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenNumberOfSugars,
+                    new BigDecimal(givenAmountOfMoney));
             this.expectedMessage = new Message(expectedMessage);
         }
 
@@ -50,10 +52,10 @@ public class LogicToMakeDrinksTest {
     @Parameters(name = "{0}")
     public static Collection<TestProperties> dataSet() {
         return Arrays.asList( //
-                new TestProperties(TEA, 0.4f, "T::"), //
-                new TestProperties(CHOCOLATE, 0.5f, "H::"), //
-                new TestProperties(COFFEE, 0.6f, "C::"), //
-                new TestProperties(TEA, 1, 0.4f, "T:1:0") //
+                new TestProperties(TEA, "0.4", "T::"), //
+                new TestProperties(CHOCOLATE, "0.5", "H::"), //
+                new TestProperties(COFFEE, "0.6", "C::"), //
+                new TestProperties(TEA, 1, "0.4", "T:1:0") //
         );
     }
 

@@ -7,6 +7,7 @@ import static software.works.machine.Drink.CHOCOLATE;
 import static software.works.machine.Drink.COFFEE;
 import static software.works.machine.Drink.TEA;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -27,8 +28,8 @@ public class LogicToSellDrinksTest {
         CustomerOrder givenCustomerOrder;
         Message expectedMessage;
 
-        TestProperties(CustomerOrder givenCustomerOrder, String expectedInstructions) {
-            this.givenCustomerOrder = givenCustomerOrder;
+        TestProperties(Drink givenDrink, String givenAmountOfMoney, String expectedInstructions) {
+            this.givenCustomerOrder = new CustomerOrder(givenDrink, new BigDecimal(givenAmountOfMoney));
             this.expectedMessage = new Message(expectedInstructions);
         }
 
@@ -45,9 +46,9 @@ public class LogicToSellDrinksTest {
     @Parameters(name = "{0}")
     public static Collection<TestProperties> dataSet() {
         return Arrays.asList( //
-                new TestProperties(new CustomerOrder(TEA, 0f), "M:It lacks 0.4 €."),
-                new TestProperties(new CustomerOrder(CHOCOLATE, 0.3f), "M:It lacks 0.2 €."),
-                new TestProperties(new CustomerOrder(COFFEE, 0.3f), "M:It lacks 0.3 €."));
+                new TestProperties(TEA, "0", "M:It lacks 0.4 €."),
+                new TestProperties(CHOCOLATE, "0.3", "M:It lacks 0.2 €."),
+                new TestProperties(COFFEE, "0.3", "M:It lacks 0.3 €."));
     }
 
     @Before
