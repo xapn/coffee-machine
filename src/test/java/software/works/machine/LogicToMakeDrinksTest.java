@@ -34,13 +34,15 @@ public class LogicToMakeDrinksTest {
             this.expectedMessage = new Message(expectedInstructions);
         }
 
-        TestProperties(Drink givenDrink, int givenNumberOfSugars, String givenAmountOfMoney, String expectedInstructions) {
+        TestProperties(Drink givenDrink, int givenNumberOfSugars, String givenAmountOfMoney,
+                String expectedInstructions) {
             this.givenCustomerOrder = new CustomerOrder(givenDrink, givenNumberOfSugars,
                     new BigDecimal(givenAmountOfMoney));
             this.expectedMessage = new Message(expectedInstructions);
         }
 
-        TestProperties(Drink givenDrink, boolean givenExtraHot, String givenAmountOfMoney, String expectedInstructions) {
+        TestProperties(Drink givenDrink, boolean givenExtraHot, String givenAmountOfMoney,
+                String expectedInstructions) {
             this.givenCustomerOrder = new CustomerOrder(givenDrink, givenExtraHot, new BigDecimal(givenAmountOfMoney));
             this.expectedMessage = new Message(expectedInstructions);
         }
@@ -70,7 +72,7 @@ public class LogicToMakeDrinksTest {
                 new TestProperties(ORANGE_JUICE, "0.6", "O::"), //
                 new TestProperties(TEA, 1, "0.4", "T:1:0"), //
                 new TestProperties(COFFEE, true, "0.6", "Ch::"), //
-                new TestProperties(CHOCOLATE, true, 1, "0.5", "Hh:1:0")//
+                new TestProperties(CHOCOLATE, true, 1, "0.5", "Hh:1:0") //
         );
     }
 
