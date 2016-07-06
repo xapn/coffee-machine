@@ -19,7 +19,7 @@ public class Logic {
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
         if (customerHasNotPaid(customerOrder)) {
-            drinkMaker.makeDrink(new Message(MESSAGE_SYMBOL + INSTRUCTION_SEPARATOR + "It lacks some money."));
+            drinkMaker.makeDrink(new Message(MESSAGE_SYMBOL + INSTRUCTION_SEPARATOR + alertInstruction(customerOrder)));
         } else {
             StringBuilder instructions = new StringBuilder();
 
@@ -33,6 +33,12 @@ public class Logic {
 
     private boolean customerHasNotPaid(CustomerOrder customerOrder) {
         return customerOrder.getAmountOfMoney() < drinkRepository.findAll().get(customerOrder.getDrink()).getPrice();
+    }
+
+    private String alertInstruction(CustomerOrder customerOrder) {
+        float lack = drinkRepository.findAll().get(customerOrder.getDrink()).getPrice()
+                - customerOrder.getAmountOfMoney();
+        return "It lacks " + lack + " €.";
     }
 
     private char drinkInstruction(CustomerOrder customerOrder) {
