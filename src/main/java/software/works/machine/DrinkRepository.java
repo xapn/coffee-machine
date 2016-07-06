@@ -2,6 +2,7 @@ package software.works.machine;
 
 import static software.works.machine.Drink.CHOCOLATE;
 import static software.works.machine.Drink.COFFEE;
+import static software.works.machine.Drink.ORANGE_JUICE;
 import static software.works.machine.Drink.TEA;
 
 import java.math.BigDecimal;
@@ -19,6 +20,7 @@ public class DrinkRepository {
                 this.put(Drink.TEA, new DrinkEntity(TEA, 'T', new BigDecimal("0.4")));
                 this.put(Drink.CHOCOLATE, new DrinkEntity(CHOCOLATE, 'H', new BigDecimal("0.5")));
                 this.put(Drink.COFFEE, new DrinkEntity(COFFEE, 'C', new BigDecimal("0.6")));
+                this.put(Drink.ORANGE_JUICE, new DrinkEntity(ORANGE_JUICE, 'O', new BigDecimal("0.6")));
             }
         };
     }

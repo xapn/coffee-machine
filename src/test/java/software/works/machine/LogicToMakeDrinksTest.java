@@ -5,6 +5,7 @@ import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 import static software.works.machine.Drink.CHOCOLATE;
 import static software.works.machine.Drink.COFFEE;
+import static software.works.machine.Drink.ORANGE_JUICE;
 import static software.works.machine.Drink.TEA;
 
 import java.math.BigDecimal;
@@ -55,6 +56,7 @@ public class LogicToMakeDrinksTest {
                 new TestProperties(TEA, "0.4", "T::"), //
                 new TestProperties(CHOCOLATE, "0.5", "H::"), //
                 new TestProperties(COFFEE, "0.6", "C::"), //
+                new TestProperties(ORANGE_JUICE, "0.6", "O::"), //
                 new TestProperties(TEA, 1, "0.4", "T:1:0") //
         );
     }
