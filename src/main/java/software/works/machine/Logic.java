@@ -32,24 +32,8 @@ public class Logic {
         return customerOrder.getAmountOfMoney() < drinkRepository.findAll().get(customerOrder.getDrink()).getPrice();
     }
 
-    private String drinkInstruction(CustomerOrder customerOrder) {
-        String result = null;
-
-        switch (customerOrder.getDrink()) {
-        case TEA:
-            result = "T";
-            break;
-        case CHOCOLATE:
-            result = "H";
-            break;
-        case COFFEE:
-            result = "C";
-            break;
-        default:
-            break;
-        }
-
-        return result;
+    private char drinkInstruction(CustomerOrder customerOrder) {
+        return drinkRepository.findAll().get(customerOrder.getDrink()).getSymbol();
     }
 
     private String sugarInstruction(CustomerOrder customerOrder) {
