@@ -9,6 +9,10 @@ public class CustomerOrder {
         this.drink = drink;
     }
 
+    public CustomerOrder(Drink drink, float amountOfMoney) {
+        throw new RuntimeException("Not yet implemented!");
+    }
+
     public CustomerOrder(Drink drink, int numberOfSugars) {
         this.drink = drink;
         this.numberOfSugars = numberOfSugars;

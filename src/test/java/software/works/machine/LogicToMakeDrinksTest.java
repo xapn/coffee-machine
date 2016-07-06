@@ -15,7 +15,7 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class LogicTest {
+public class LogicToMakeDrinksTest {
 
     private Logic sut;
     private DrinkMaker drinkMakerMock;
