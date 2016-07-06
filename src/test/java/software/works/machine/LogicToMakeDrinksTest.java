@@ -24,11 +24,6 @@ public class LogicToMakeDrinksTest {
         private CustomerOrder givenCustomerOrder;
         private Message expectedMessage;
 
-        public TestProperties(Drink givenDrink, String expectedMessage) {
-            this.givenCustomerOrder = new CustomerOrder(givenDrink);
-            this.expectedMessage = new Message(expectedMessage);
-        }
-
         public TestProperties(Drink givenDrink, float givenAmountOfMoney, String expectedMessage) {
             this.givenCustomerOrder = new CustomerOrder(givenDrink, givenAmountOfMoney);
             this.expectedMessage = new Message(expectedMessage);
@@ -54,7 +49,7 @@ public class LogicToMakeDrinksTest {
         return Arrays.asList( //
                 new TestProperties(Drink.TEA, 0.4f, "T::"), //
                 new TestProperties(Drink.CHOCOLATE, 0.5f, "H::"), //
-                new TestProperties(Drink.COFFEE, "C::"), //
+                new TestProperties(Drink.COFFEE, 0.6f, "C::"), //
                 new TestProperties(Drink.TEA, 1, 0.4f, "T:1:0") //
         );
     }
