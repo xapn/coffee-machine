@@ -4,6 +4,7 @@ import static org.easymock.EasyMock.mock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 import static software.works.machine.Drink.CHOCOLATE;
+import static software.works.machine.Drink.COFFEE;
 import static software.works.machine.Drink.TEA;
 
 import org.junit.Before;
@@ -41,6 +42,19 @@ public class LogicToSellDrinksTest {
 
         // WHEN
         sut.sendOrderToDrinkMaker(new CustomerOrder(CHOCOLATE, 0f));
+
+        // THEN
+        verify(drinkMakerMock);
+    }
+
+    @Test
+    public void should_alert_given_not_enough_money_for_coffee() {
+        // GIVEN
+        drinkMakerMock.makeDrink(new Message("M:It lacks some money."));
+        replay(drinkMakerMock);
+
+        // WHEN
+        sut.sendOrderToDrinkMaker(new CustomerOrder(COFFEE, 0f));
 
         // THEN
         verify(drinkMakerMock);
