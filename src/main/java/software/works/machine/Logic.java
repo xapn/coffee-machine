@@ -1,5 +1,6 @@
 package software.works.machine;
 
+import static software.works.machine.Drink.CHOCOLATE;
 import static software.works.machine.Drink.TEA;
 
 public class Logic {
@@ -11,7 +12,8 @@ public class Logic {
     }
 
     public void sendOrderToDrinkMaker(CustomerOrder customerOrder) {
-        if (customerOrder.getDrink() == TEA && customerOrder.getAmountOfMoney() < 0.4f) {
+        if (customerOrder.getDrink() == TEA && customerOrder.getAmountOfMoney() < 0.4f //
+                || customerOrder.getDrink() == CHOCOLATE && customerOrder.getAmountOfMoney() < 0.5f) {
             drinkMaker.makeDrink(new Message("M:It lacks some money."));
         } else {
             StringBuilder instructions = new StringBuilder();
