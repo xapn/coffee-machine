@@ -29,20 +29,27 @@ public class LogicToMakeDrinksTest {
         private CustomerOrder givenCustomerOrder;
         private Message expectedMessage;
 
-        TestProperties(Drink givenDrink, String givenAmountOfMoney, String expectedMessage) {
+        TestProperties(Drink givenDrink, String givenAmountOfMoney, String expectedInstructions) {
             this.givenCustomerOrder = new CustomerOrder(givenDrink, new BigDecimal(givenAmountOfMoney));
-            this.expectedMessage = new Message(expectedMessage);
+            this.expectedMessage = new Message(expectedInstructions);
         }
 
-        TestProperties(Drink givenDrink, int givenNumberOfSugars, String givenAmountOfMoney, String expectedMessage) {
+        TestProperties(Drink givenDrink, int givenNumberOfSugars, String givenAmountOfMoney, String expectedInstructions) {
             this.givenCustomerOrder = new CustomerOrder(givenDrink, givenNumberOfSugars,
                     new BigDecimal(givenAmountOfMoney));
-            this.expectedMessage = new Message(expectedMessage);
+            this.expectedMessage = new Message(expectedInstructions);
         }
 
-        TestProperties(Drink givenDrink, boolean givenExtraHot, String givenAmountOfMoney, String expectedMessage) {
+        TestProperties(Drink givenDrink, boolean givenExtraHot, String givenAmountOfMoney, String expectedInstructions) {
             this.givenCustomerOrder = new CustomerOrder(givenDrink, givenExtraHot, new BigDecimal(givenAmountOfMoney));
-            this.expectedMessage = new Message(expectedMessage);
+            this.expectedMessage = new Message(expectedInstructions);
+        }
+
+        public TestProperties(Drink givenDrink, boolean givenExtraHot, int givenNumberOfSugars,
+                String givenAmountOfMoney, String expectedInstructions) {
+            this.givenCustomerOrder = new CustomerOrder(givenDrink, givenExtraHot, givenNumberOfSugars,
+                    new BigDecimal(givenAmountOfMoney));
+            this.expectedMessage = new Message(expectedInstructions);
         }
 
         @Override
@@ -62,7 +69,8 @@ public class LogicToMakeDrinksTest {
                 new TestProperties(COFFEE, "0.6", "C::"), //
                 new TestProperties(ORANGE_JUICE, "0.6", "O::"), //
                 new TestProperties(TEA, 1, "0.4", "T:1:0"), //
-                new TestProperties(COFFEE, true, "0.6", "Ch::") //
+                new TestProperties(COFFEE, true, "0.6", "Ch::"), //
+                new TestProperties(CHOCOLATE, true, 1, "0.5", "Hh:1:0")//
         );
     }
 

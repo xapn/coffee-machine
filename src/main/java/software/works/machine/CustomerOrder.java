@@ -30,6 +30,10 @@ public class CustomerOrder {
         this.amountOfMoney = amountOfMoney;
     }
 
+    public CustomerOrder(Drink drink, boolean extraHot, int numberOfSugars, BigDecimal amountOfMoney) {
+        throw new RuntimeException("Not yet implemented!");
+    }
+
     public Drink getDrink() {
         return drink;
     }
