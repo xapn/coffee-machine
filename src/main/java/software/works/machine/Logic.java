@@ -1,14 +1,16 @@
 package software.works.machine;
 
-import static software.works.machine.Drink.CHOCOLATE;
-import static software.works.machine.Drink.COFFEE;
-import static software.works.machine.Drink.TEA;
-
 public class Logic {
 
     private DrinkMaker drinkMaker;
+    private DrinkRepository drinkRepository;
+
+    private Logic() {
+        drinkRepository = new DrinkRepository();
+    }
 
     public Logic(DrinkMaker drinkMaker) {
+        this();
         this.drinkMaker = drinkMaker;
     }
 
@@ -27,9 +29,7 @@ public class Logic {
     }
 
     private boolean customerHasNotPaid(CustomerOrder customerOrder) {
-        return customerOrder.getDrink() == TEA && customerOrder.getAmountOfMoney() < 0.4f //
-                || customerOrder.getDrink() == CHOCOLATE && customerOrder.getAmountOfMoney() < 0.5f //
-                || customerOrder.getDrink() == COFFEE && customerOrder.getAmountOfMoney() < 0.6f;
+        return customerOrder.getAmountOfMoney() < drinkRepository.findAll().get(customerOrder.getDrink()).getPrice();
     }
 
     private String drinkInstruction(CustomerOrder customerOrder) {
